@@ -1,0 +1,29 @@
+{
+  "name": "timestamp",
+  "version": "1.0.0",
+  "description": "timestamp challenge for FCC backend. accepts unix or long form dates andreturns both forms to the user.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-vampiire/FCCBackEnd.git"
+  },
+  "keywords": [
+    "freecodecamp",
+    "timestamp",
+    "backend",
+    "challenge"
+  ],
+  "author": "Vampiire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the-vampiire/FCCBackEnd/issues"
+  },
+  "homepage": "https://github.com/the-vampiire/FCCBackEnd#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
