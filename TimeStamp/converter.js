@@ -5,22 +5,61 @@
 
 function convertTime(time){
 
-    // console.log(`long date: ${longDate}`);
+    let unix,
+        natural;
 
+// time has been passed in natural form
     if(~time.indexOf(' ')){
-        return {unix: Date.parse(time)/1000, long: time};
+        unix = Date.parse(time);
+        natural = new Date(unix).toDateString();
+
+    // clean up for display
+        natural = natural.slice(natural.indexOf(' ')+1);
+        unix = unix/1000;
     }
 
+// time has been passed as a unix timestamp
     else{
-        console.log('else called');
-        time = Number(time)*1000;
-        let longDate = new Date(time).toDateString();
-        return {unix : time/1000, long: longDate.slice(longDate.indexOf(' ')+1)};
+
+    // catch unix timestamp in either long (ms) or short (s) form. convert to appropriate format before processing
+        time += '';
+
+    // short form (seconds)
+        if(time.length === 10){
+            time *= 1000;
+        }
+    // long form (milliseconds)
+        else if(time.length === 13){
+            time *= 1;
+        }
+    // if a unix timestamp outside of the valid range of times is passed, return null
+        else{
+            return {unix: null, natural: null};
+        }
+
+        natural = new Date().toDateString();
+        unix = Date.parse(natural);
+
+    // clean up for display
+        natural = natural.slice(natural.indexOf(' ')+1);
+        unix = unix / 1000;
     }
 
+    if(isNaN(unix)){
+        return {unix: null, natural: null};
+    }
+
+
+    return {unix: unix, natural: natural};
 
 }
+
 
 module.exports = {
   time : convertTime
 };
+
+
+
+
+

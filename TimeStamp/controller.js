@@ -13,21 +13,13 @@ const convert = require('./converter');
 
 router.get('/:id', function(req, res){
 
-    console.log(req.params.id);
-
     let timeString = req.params.id;
 
-    console.log(`timestring: ${timeString}`);
-
-    // returns an object with 2 formatted date keys {unix, long}
+    // returns an object with 2 formatted date keys {unix, natural}
     let dates = convert.time(timeString);
-
-    console.log(dates);
 
     res.json(dates);
 
-    // console.log(`Unix: ${dates.unix}, Natural: ${dates.long.slice(dates.long)}`);
 
 });
-
 
