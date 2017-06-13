@@ -5,22 +5,40 @@
 
 function convertTime(time){
 
-    // console.log(`long date: ${longDate}`);
+    let unix,
+        natural;
 
-    if(~time.indexOf(' ')){
-        return {unix: Date.parse(time)/1000, long: time};
+
+    if(time.indexOf(' ') !== -1){
+        unix = Date.parse(time);
+        natural = new Date(unix).toDateString();
+
+        // clean up for display
+        natural = natural.slice(natural.indexOf(' ')+1);
+        unix = unix/1000;
     }
-
     else{
-        console.log('else called');
-        time = Number(time)*1000;
-        let longDate = new Date(time).toDateString();
-        return {unix : time/1000, long: longDate.slice(longDate.indexOf(' ')+1)};
+        natural = new Date(time*1000).toDateString();
+        unix = Date.parse(natural);
+
+        // clean up for display
+        natural = natural.slice(natural.indexOf(' ')+1);
+        unix = unix / 1000;
     }
 
+    if(isNaN(unix)){
+        console.log(`is NaN: ${isNaN(unix)}`);
+        return {unix: null, natural: null};
+    }
+
+
+    return {unix: unix, natural: natural};
 
 }
 
 module.exports = {
   time : convertTime
 };
+
+
+
