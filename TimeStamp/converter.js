@@ -8,8 +8,8 @@ function convertTime(time){
     let unix,
         natural;
 
-
-    if(time.indexOf(' ') !== -1){
+// time has been passed in natural form
+    if(~time.indexOf(' ')){
         unix = Date.parse(time);
         natural = new Date(unix).toDateString();
 
@@ -17,6 +17,8 @@ function convertTime(time){
         natural = natural.slice(natural.indexOf(' ')+1);
         unix = unix/1000;
     }
+
+// time has been passed as a unix timestamp
     else{
         natural = new Date(time*1000).toDateString();
         unix = Date.parse(natural);
@@ -27,7 +29,6 @@ function convertTime(time){
     }
 
     if(isNaN(unix)){
-        console.log(`is NaN: ${isNaN(unix)}`);
         return {unix: null, natural: null};
     }
 
