@@ -29,8 +29,12 @@ function convertTime(time){
             time *= 1000;
         }
     // long form (milliseconds)
-        else{
+        else if(time.length === 13){
             time *= 1;
+        }
+    // if a unix timestamp outside of the valid range of times is passed, return null
+        else{
+            return {unix: null, natural: null};
         }
 
         natural = new Date().toDateString();
