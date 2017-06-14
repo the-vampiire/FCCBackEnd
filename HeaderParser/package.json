@@ -2,6 +2,7 @@
   "name": "headerparser",
   "version": "1.0.0",
   "description": "Request Header Parser Microservice",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
