@@ -2,7 +2,6 @@
   "name": "headerparser",
   "version": "1.0.0",
   "description": "Request Header Parser Microservice",
-  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
@@ -22,5 +21,9 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3"
+  },
+  "engines": {
+    "node": "8.0.0",
+    "npm" : "5.0.3"
   }
 }
