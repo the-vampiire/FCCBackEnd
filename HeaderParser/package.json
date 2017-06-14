@@ -1,0 +1,26 @@
+{
+  "name": "headerparser",
+  "version": "1.0.0",
+  "description": "Request Header Parser Microservice",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-vampiire/FCCBackEnd/tree/master/HeaderParser"
+  },
+  "keywords": [
+    "header",
+    "parser",
+    "microservice",
+    "backend",
+    "FCC"
+  ],
+  "author": "Vampiire",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
