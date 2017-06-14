@@ -10,7 +10,7 @@ const app = express();
 app.use(bp.json());
 app.use(bp.urlencoded({extended : false}));
 
-app.use('/', controller);
+app.use('/time', controller);
 
 app.use('/', express.static('public'));
 
