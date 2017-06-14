@@ -3,8 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>TimeStamp</title>
-</head>gi
+
+
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
 <body>
-Paste your Unix timestamp or Natural form timestamp onto the end of the url to be returned an object {unix: unixTimeStamp, natural: naturalTimeStamp}
+<h1>TimeStamp Microservice</h1>
+<hr>
+<h3>Paste your Unix timestamp or Natural form timestamp onto the end of the url
+    to be returned an object with both forms of time. <br>
+    [unix (in seconds) and natural as a string]
+</h3>
+
+<h2>Examples:</h2>
+<ol>
+    <li>
+        <h3>A unix timestamp (in seconds) is appended to the end of the url or passed as a request parameter in an AJAX call</h3>
+        <code class="code">https://vampiire-timestamp.herokuapp.com/1497326400 </code><br>
+            returns:<code class="code"> {"unix":1497326400,"natural":"Jun 13 2017"} </code>
+    </li>
+
+    <li>
+        <h3>A unix timestamp (in milliseconds) is appended to the end of the url or passed as a request parameter in an AJAX call</h3>
+        <code class="code">https://vampiire-timestamp.herokuapp.com/1497326400000</code><br>
+            returns:<code class="code">{"unix":1497326400,"natural":"Jun 13 2017"} </code>
+    </li>
+
+    <li>
+        <h3>A natural form timestamp is appended to the end of the url or passed as a request parameter in an AJAX call</h3>
+        <h4>[spaces and commas are handled by the browser and function]</h4>
+        <code class="code">https://vampiire-timestamp.herokuapp.com/June 13 2017e</code><br>
+            returns: <code class="code">{"unix":1497326400,"natural":"Jun 13 2017"} </code>
+    </li>
+
+</ol>
+
 </body>
 </html>
