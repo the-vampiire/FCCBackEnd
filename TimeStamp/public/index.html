@@ -19,21 +19,21 @@
 <ol>
     <li>
         <h3>A unix timestamp (in seconds) is appended to the end of the url or passed as a request parameter in an AJAX call</h3>
-        <code class="code">https://vampiire-timestamp.herokuapp.com/1497326400 </code><br>
-            returns:<code class="code"> {"unix":1497326400,"natural":"Jun 13 2017"} </code>
+        <code class="code">https://vampiire-timestamp.herokuapp.com/time/1497326400 </code><br>
+            returns:<code class="code"> {"unix":1497326400,"natural":"June 13, 2017"} </code>
     </li>
 
     <li>
         <h3>A unix timestamp (in milliseconds) is appended to the end of the url or passed as a request parameter in an AJAX call</h3>
-        <code class="code">https://vampiire-timestamp.herokuapp.com/1497326400000</code><br>
-            returns:<code class="code">{"unix":1497326400,"natural":"Jun 13 2017"} </code>
+        <code class="code">https://vampiire-timestamp.herokuapp.com/time/1497326400000</code><br>
+            returns:<code class="code">{"unix":1497326400,"natural":"June 13, 2017"} </code>
     </li>
 
     <li>
         <h3>A natural form timestamp is appended to the end of the url or passed as a request parameter in an AJAX call</h3>
         <h4>[spaces and commas are handled by the browser and function]</h4>
-        <code class="code">https://vampiire-timestamp.herokuapp.com/June 13 2017e</code><br>
-            returns: <code class="code">{"unix":1497326400,"natural":"Jun 13 2017"} </code>
+        <code class="code">https://vampiire-timestamp.herokuapp.com/time/June 13 2017e</code><br>
+            returns: <code class="code">{"unix":1497326400,"natural":"June 13, 2017"} </code>
     </li>
 
 </ol>
