@@ -5,31 +5,18 @@
 
 function convertTime(time){
 
+// convertTime variables
     let unix,
         newDate,
-        locale,
-        month,
-        // to match the day of the month
-        match = new RegExp(/[0-9]{2}/g),
-        day,
-        natural = '';
-
-    const months = ["January", "February", "March", "April", "May",
-        "June", "July", "August", "September", "October", "November", "December"];
+        natural;
 
 // time has been passed in natural form
     if(~time.indexOf(' ')){
         unix = Date.parse(time);
         newDate = new Date(time);
 
-    // finds the day of the month
-        day = String(newDate).match(match)[0];
-        month = newDate.getMonth();
-
-    // passes the index, month, into the months array to get full month name
-        natural += months[month] +' ';
-        natural += day+ ', ';
-        natural += newDate.getFullYear();
+    // call tha naturalDate function
+        natural = naturalDate(newDate);
 
     // clean up for display
         unix = unix/1000;
@@ -41,11 +28,11 @@ function convertTime(time){
     // catch unix timestamp in either long (ms) or short (s) form. convert to appropriate format before processing
         time += '';
 
-    // short form (seconds)
+    // short form (seconds), converts back to a number
         if(time.length === 10){
             time *= 1000;
         }
-    // long form (milliseconds)
+    // long form (milliseconds), converts back to a number
         else if(time.length === 13){
             time *= 1;
         }
@@ -56,17 +43,10 @@ function convertTime(time){
 
         newDate = new Date(time);
 
-        day = String(newDate).match(match)[0];
-        month = newDate.getMonth();
+        natural = naturalDate(newDate);
 
-        natural += months[month] +' ';
-        natural += day+ ', ';
-        natural += newDate.getFullYear();
+        unix = Date.parse(newDate) / 1000;
 
-        unix = Date.parse(newDate);
-
-    // clean up for display
-        unix = unix / 1000;
     }
 
     if(isNaN(unix)){
@@ -77,10 +57,38 @@ function convertTime(time){
 
 }
 
+function naturalDate(newDate){
+
+    let month,
+
+        // to match the day of the month
+        match = new RegExp(/[0-9]{2}/g),
+        day,
+        date = '';
+
+// for full name months
+    const months = ["January", "February", "March", "April", "May",
+        "June", "July", "August", "September", "October", "November", "December"];
+
+// finds the day of the month
+    day = String(newDate).match(match)[0];
+    month = newDate.getMonth();
+
+// passes the index, month, into the months array to get full month name
+    date += months[month] +' ';
+    date += day+ ', ';
+    date += newDate.getFullYear();
+
+
+    return date;
+
+}
+
 
 module.exports = {
   time : convertTime
 };
+
 
 
 
