@@ -38,6 +38,9 @@ function cleaner(array){
     return array;
 }
 
-module.exports = cleaner;
+module.exports = {
+
+    cleaner : cleaner
+};
 
 
