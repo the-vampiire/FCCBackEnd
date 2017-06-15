@@ -25,26 +25,37 @@ mongoose.connect('mongodb://shortURL:theShortenator@ds127892.mlab.com:27892/shor
 
 
 
+
 function getURL(route){
 
-    return URLArrayModel.findOne({"_id" : "URLArray"}, function(result){
+    return URLArrayModel.find({"_id" : "URLArray"}).then(function(data){
 
-        console.log(`result: ${result}`);
+        const URLArray = data[0].URLs;
 
-        result = tools.commands.checkCollection(result);
-
-        const URLArray = result.URLs;
-
-        // console.log(URLArray);
-
-        console.log(tools.commands.originalURL(URLArray, route));
-
-
-       return 'stuff'
+        return tools.commands.originalURL(URLArray, route);
 
     });
 
 }
+
+function setURL(link){
+
+
+    URLArrayModel.find({"_id" : "URLArray"}).then(function(document){
+
+        tools.commands.addURL(document, link);
+
+        document[0].save(function(err){
+
+            console.log('saved a new one named test2');
+        })
+
+    });
+
+
+}
+
+setURL('www.test3test.com');
 
 
 module.exports = {

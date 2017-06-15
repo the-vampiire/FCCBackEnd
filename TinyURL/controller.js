@@ -21,28 +21,21 @@ router.get('/', function(req, res){
 router.get('/:id', function(req, res) {
 
 
-    let route = Number(req.params.id);
+    let link = Number(req.params.id);
 
-    let result = dbQuery.getURL(route).then(function (data) {
+    dbQuery.getURL(link).then(function(data){
 
-        // console.log(data);
+        res.redirect(data);
 
     });
 
-    res.redirect('http://www.google.com');
-
-
 });
 
-router.post('/shorten/:id', function(req, res){
+router.post('/:id', function(req, res){
 
     // handle shortening the link based on user input
 
-});
 
-router.get('/shorten/:id', function(req, res){
-
-    // send back the shortened url
 
 });
 

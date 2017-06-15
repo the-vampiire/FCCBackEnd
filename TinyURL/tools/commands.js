@@ -4,8 +4,6 @@
 
 const shortenedURL = require('../DB_Format/shortenedURL');
 
-const URL_Array = require('../DB_Format/URL_Array');
-
 function newShortURL(link, route){
 
     // build the URL shortened link
@@ -23,34 +21,14 @@ function newShortURL(link, route){
     return shortDoc;
 }
 
-function checkCollection(results){
-
-    if(results === null){
-
-        // console.log(results);
-
-        let document = newShortURL('https://www.vampiire.org', 0);
-
-        let URLArray = new URL_Array.model({"_id": 'URLArray', "URLs" : document});
-
-        URLArray.save(function(err){
-            if(err) throw err;
-
-            console.log('saved new collection');
-        });
-
-        return URLArray;
-    }
-
-    return results;
-}
-
-function addURL(array, link){
+function addURL(document, link){
 
 // update all the indices (_id which stores the routes) for existing shortened URL documents
 // prevent overlapping routes
-    array.forEach(function(e,i){
 
+    const array = document[0].URLs;
+
+    array.forEach(function(e,i){
         e._id = i;
 
     });
@@ -62,7 +40,6 @@ function addURL(array, link){
 
     // push the new document
     array.push(shortDoc);
-
 
     // return the array, document, and the shortened URL for the user
     return {array: array, document: shortDoc, shortenedURL : shortDoc.short};
@@ -89,9 +66,35 @@ function originalURL(array, route){
 
 
 module.exports = {
-    checkCollection : checkCollection,
+
+    // checkCollection : checkCollection,
     newShortURL : newShortURL,
     addURL : addURL,
     originalURL : originalURL
 };
+
+
+// Only needed once to initiate database
+
+// function checkCollection(results){
+//
+//     if(results === null){
+//
+//         // console.log(results);
+//
+//         let document = newShortURL('https://www.vampiire.org', 0);
+//
+//         let URLArray = new URL_Array.model({"_id": 'URLArray', "URLs" : document});
+//
+//         // URLArray.save(function(err){
+//         //     if(err) throw err;
+//         //
+//         //     console.log('saved new collection');
+//         // });
+//
+//         return URLArray;
+//     }
+//
+//     return results;
+// }
 

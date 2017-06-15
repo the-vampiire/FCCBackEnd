@@ -16,7 +16,7 @@ const URLArraySchema = new mongoose.Schema({
 
 });
 
-const URLArrayModel = mongoose.model('URLArrayModel', URLArraySchema);
+let URLArrayModel = mongoose.model('URLArrayModel', URLArraySchema);
 
 
 module.exports = {
