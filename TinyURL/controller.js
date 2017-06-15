@@ -31,6 +31,8 @@ router.get('/', function(req, res){
 
     // serve homepage
 
+    res.json('test worked');
+
 });
 
 
@@ -38,9 +40,9 @@ router.get('/', function(req, res){
 
 router.get('/:id', function(req, res) {
 
-    let link = Number(req.params.id);
+    let route = Number(req.params.id);
 
-    dbQuery.getURL(link).then(function(data){
+    dbQuery.getURL(route).then(function(data){
 
         res.redirect(data);
 

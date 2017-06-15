@@ -12,6 +12,7 @@ const URLArraySchema = new mongoose.Schema({
 
     "_id" : String,
 
+    "updated": {type: Number, default: Date.now() },
     'URLs' : [shortenedURL.shortSchema]
 
 });

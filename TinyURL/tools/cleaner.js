@@ -10,6 +10,17 @@
  */
 
 
+/*
+
+
+pass a new "updated" field into the URL_Array schema
+
+on each server request check the updated date and compare to current date
+if greater than 24 hours then call the cleaner
+
+ */
+
+
 
 let currentTime = Date.now();
 
@@ -22,25 +33,49 @@ const timeLimit = days * day_ms;
 // criteria of a minimum number of usages and a maximum date
 let criteria = {usedMinimum : 10, dateMaximum : Date.now()-timeLimit};
 
-function cleaner(array){
+function cleaner(collection){
 
-    array.forEach(function(e, i){
+    const array = collection[0].URLs;
 
-    // if the item has been used less than the mimimum used amount
-    // and is older than the criteria days limit then delete it
-        if(e.created <= criteria.dateMaximum && e.used < criteria.usedMinimum){
-        // delete the unused and / or old shortened URL
-            array.splice(i, 1);
+    const updated = collection[0].updated;
 
-        }
-    });
+    if(updated <= currentTime - day_ms){
 
-    return array;
+        array.forEach(function(e, i){
+
+            // if the item has been used less than the mimimum used amount
+            // and is older than the criteria days limit then delete it
+            if(e.created <= criteria.dateMaximum && e.used < criteria.usedMinimum){
+
+                // delete the unused and / or old shortened URL
+                array.splice(i, 1);
+
+            }
+        });
+
+        // update the updated time
+        collection[0].updated = currentTime;
+
+        // save the changes
+        collection[0].save(function(err){
+            if(err) throw err;
+
+            console.log('old and unused shortened URL has been deleted');
+
+        });
+
+        return array;
+
+    }
+
+    return 'No old or unused links found';
 }
 
 module.exports = {
 
     cleaner : cleaner
 };
+
+
 
 

@@ -13,9 +13,12 @@ const URLArrayModel = URL_Array.model;
 
 function getURL(route){
 
-    return URLArrayModel.find({"_id" : "URLArray"}).then(function(data){
+    return URLArrayModel.find({"_id" : "URLArray"}).then(function(collection){
 
-        const URLArray = data[0].URLs;
+        // run the cleaner to cleanup old / unused links
+        tools.cleaner.cleaner(collection);
+
+        const URLArray = collection[0].URLs;
 
         return tools.commands.originalURL(URLArray, route);
 
@@ -25,12 +28,13 @@ function getURL(route){
 
 function setURL(link){
 
+    tools.cleaner.cleaner(data);
 
-    URLArrayModel.find({"_id" : "URLArray"}).then(function(document){
+    URLArrayModel.find({"_id" : "URLArray"}).then(function(collection){
 
-        tools.commands.addURL(document, link);
+        tools.commands.addURL(collection, link);
 
-        document[0].save(function(err){
+        collection[0].save(function(err){
 
             console.log('saved a new one named test2');
         })

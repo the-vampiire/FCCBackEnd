@@ -4,6 +4,9 @@
 
 const shortenedURL = require('../DB_Format/shortenedURL');
 
+
+
+
 function newShortURL(link, route){
 
     // build the URL shortened link
@@ -21,12 +24,12 @@ function newShortURL(link, route){
     return shortDoc;
 }
 
-function addURL(document, link){
+function addURL(collection, link){
 
 // update all the indices (_id which stores the routes) for existing shortened URL documents
 // prevent overlapping routes
 
-    const array = document[0].URLs;
+    const array = collection[0].URLs;
 
     array.forEach(function(e,i){
         e._id = i;
@@ -37,8 +40,6 @@ function addURL(document, link){
 
     let shortDoc = newShortURL(link, route);
 
-
-    // push the new document
     array.push(shortDoc);
 
     // return the array, document, and the shortened URL for the user
@@ -68,33 +69,39 @@ function originalURL(array, route){
 module.exports = {
 
     // checkCollection : checkCollection,
+
     newShortURL : newShortURL,
     addURL : addURL,
     originalURL : originalURL
+
 };
 
 
+// uncomment when creating a new collection
+// const URL_Array = require('../DB_Format/URL_Array');
+
 // Only needed once to initiate database
 
-// function checkCollection(results){
+// function checkCollection(data) {
 //
-//     if(results === null){
-//
-//         // console.log(results);
+//     if(data === null){
 //
 //         let document = newShortURL('https://www.vampiire.org', 0);
 //
-//         let URLArray = new URL_Array.model({"_id": 'URLArray', "URLs" : document});
+//         let URLArray = new URL_Array.model({"_id": 'URLArray', "URLs": document});
 //
-//         // URLArray.save(function(err){
-//         //     if(err) throw err;
-//         //
-//         //     console.log('saved new collection');
-//         // });
+//         URLArray.save(function (err) {
+//             if (err) throw err;
+//
+//             console.log('saved new collection');
+//         });
 //
 //         return URLArray;
+//
 //     }
 //
-//     return results;
+//     return data;
+//
 // }
+
 
