@@ -4,6 +4,8 @@
 
 const shortenedURL = require('../DB_Format/shortenedURL');
 
+const URL_Array = require('../DB_Format/URL_Array');
+
 function newShortURL(link, route){
 
     // build the URL shortened link
@@ -19,6 +21,14 @@ function newShortURL(link, route){
     });
 
     return shortDoc;
+}
+
+function createCollection(link){
+
+    let document = newShortURL(link, 0);
+
+    return new URL_Array.collection({"URLs" : document});
+
 }
 
 function addURL(array, link){
@@ -49,17 +59,23 @@ function addURL(array, link){
 // used in routing the user's shortened url request back towards their intended target
 function originalURL(array, route){
 
-    array.forEach(function(e,i){
+    let originalLink;
 
-        if(array[i]._id === route){
-            return e.original;
+    array.forEach(function(e){
+        if(e._id === route){
+
+        // updates the used count for the link
+            e.used++;
+            originalLink = e.original;
         }
-
     });
+
+    return originalLink;
 }
 
-module.exports = {
 
+module.exports = {
+    createCollection : createCollection,
     newShortURL : newShortURL,
     addURL : addURL,
     originalURL : originalURL

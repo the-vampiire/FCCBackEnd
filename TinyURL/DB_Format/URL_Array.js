@@ -25,5 +25,5 @@ module.exports = {
 };
 
 
-// MODELNAME.URLs[i] to access shortened URL documents
+// collection.URLs[i] to access shortened URL documents
 

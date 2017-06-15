@@ -15,6 +15,8 @@ const mongoose = require('mongoose');
 
 const shortSchema = mongoose.Schema({
 
+    "_id" : {type: Number, default: 0},
+
     "original" : String,
     "short" : String,
     "created": {type: Date, default: Date.now()},
