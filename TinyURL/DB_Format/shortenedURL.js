@@ -19,7 +19,7 @@ const shortSchema = mongoose.Schema({
 
     "original" : String,
     "short" : String,
-    "created": {type: Date, default: Date.now()},
+    "created": {type: Number, default: Date.now()},
     "used": {type: Number, default: 0}
 
 });

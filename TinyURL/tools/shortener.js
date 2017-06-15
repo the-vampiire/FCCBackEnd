@@ -37,7 +37,7 @@ function addURL(array, link){
 // prevent overlapping routes
     array.forEach(function(e,i){
 
-        array[i]._id = i;
+        e._id = i;
 
     });
 
