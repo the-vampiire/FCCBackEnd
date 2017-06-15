@@ -3,12 +3,24 @@
  */
 
 const express = require('express');
-
 const router = module.exports = express.Router();
 
-const dbQuery = require('./tools/dbQuery');
+const mongoose = require('mongoose');
 
+const dbQuery = require('./tools/dbQuery');
 const tools = require('./tools/exporter');
+
+
+require('dotenv').config({path: 'private.env'});
+
+const DB_Route = process.env.ROUTE;
+
+mongoose.connect(DB_Route, function(err){
+
+    if(err) throw err;
+    console.log('connected to database');
+
+});
 
 router.get('/', function(req, res){
 

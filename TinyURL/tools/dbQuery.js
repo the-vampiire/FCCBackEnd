@@ -11,21 +11,6 @@ const URL_Array = require('../DB_Format/URL_Array');
 
 const URLArrayModel = URL_Array.model;
 
-require('dotenv').config({path: '../private.env'});
-
-const DB_Route = process.env.ROUTE;
-
-mongoose.connect('mongodb://shortURL:theShortenator@ds127892.mlab.com:27892/short-url', function(err){
-
-    if(err) throw err;
-    console.log('connected to database');
-
-});
-
-
-
-
-
 function getURL(route){
 
     return URLArrayModel.find({"_id" : "URLArray"}).then(function(data){
@@ -54,9 +39,6 @@ function setURL(link){
 
 
 }
-
-setURL('www.test3test.com');
-
 
 module.exports = {
 
