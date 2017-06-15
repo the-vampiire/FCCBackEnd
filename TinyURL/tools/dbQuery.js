@@ -42,7 +42,8 @@ function setURL(link){
 
 module.exports = {
 
-    getURL : getURL
+    getURL : getURL,
+    setURL : setURL
 
 };
 

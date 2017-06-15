@@ -11,6 +11,8 @@ const dbQuery = require('./tools/dbQuery');
 const tools = require('./tools/exporter');
 
 
+
+// --------------- Connect to database
 require('dotenv').config({path: 'private.env'});
 
 const DB_Route = process.env.ROUTE;
@@ -22,8 +24,12 @@ mongoose.connect(DB_Route, function(err){
 
 });
 
+
+// --------------- Get and Post Handlers
+
 router.get('/', function(req, res){
 
+    // serve homepage
 
 });
 
@@ -31,7 +37,6 @@ router.get('/', function(req, res){
 // use res.redirect('link') to respond with an automatic redirect (for routing the shortened URL)
 
 router.get('/:id', function(req, res) {
-
 
     let link = Number(req.params.id);
 
@@ -47,7 +52,11 @@ router.post('/:id', function(req, res){
 
     // handle shortening the link based on user input
 
+    let link = req.params.id;
 
+    dbQuery.setURL(link);
+
+    res.redirect('/');
 
 });
 
