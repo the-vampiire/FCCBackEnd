@@ -38,4 +38,6 @@ function cleaner(array){
     return array;
 }
 
+module.exports = cleaner;
+
 
