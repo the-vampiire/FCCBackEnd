@@ -23,23 +23,21 @@ mongoose.connect('mongodb://shortURL:theShortenator@ds127892.mlab.com:27892/shor
 });
 
 
-URLArrayModel.find({}, function(res){
-    console.log(res);
-});
+
 
 function getURL(route){
 
-    return URLArrayModel.findOne({}, function(result){
+    return URLArrayModel.findOne({"_id" : "URLArray"}, function(result){
 
         console.log(`result: ${result}`);
 
-        // result = tools.commands.checkCollection(result);
-        //
-        // const URLArray = result.URLs;
-        //
-        // // console.log(URLArray);
-        //
-        // console.log(tools.commands.originalURL(URLArray, route));
+        result = tools.commands.checkCollection(result);
+
+        const URLArray = result.URLs;
+
+        // console.log(URLArray);
+
+        console.log(tools.commands.originalURL(URLArray, route));
 
 
        return 'stuff'
