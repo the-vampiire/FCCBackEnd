@@ -1,5 +1,8 @@
 /**
  * Created by Vampiire on 6/15/17.
+ *
+ * exports each of the tools individually
+ *
  */
 
 const cleaner = require('./cleaner');

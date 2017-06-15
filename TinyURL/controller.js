@@ -58,6 +58,7 @@ router.post('/:id', function(req, res){
 
     dbQuery.setURL(link);
 
+    // send back to homepage
     res.redirect('/');
 
 });

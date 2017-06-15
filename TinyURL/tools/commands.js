@@ -4,9 +4,6 @@
 
 const shortenedURL = require('../DB_Format/shortenedURL');
 
-
-
-
 function newShortURL(link, route){
 
     // build the URL shortened link
