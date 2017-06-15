@@ -23,12 +23,26 @@ function newShortURL(link, route){
     return shortDoc;
 }
 
-function createCollection(link){
+function checkCollection(results){
 
-    let document = newShortURL(link, 0);
+    if(results === null){
 
-    return new URL_Array.collection({"URLs" : document});
+        // console.log(results);
 
+        let document = newShortURL('https://www.vampiire.org', 0);
+
+        let URLArray = new URL_Array.model({"_id": 'URLArray', "URLs" : document});
+
+        URLArray.save(function(err){
+            if(err) throw err;
+
+            console.log('saved new collection');
+        });
+
+        return URLArray;
+    }
+
+    return results;
 }
 
 function addURL(array, link){
@@ -75,7 +89,7 @@ function originalURL(array, route){
 
 
 module.exports = {
-    createCollection : createCollection,
+    checkCollection : checkCollection,
     newShortURL : newShortURL,
     addURL : addURL,
     originalURL : originalURL

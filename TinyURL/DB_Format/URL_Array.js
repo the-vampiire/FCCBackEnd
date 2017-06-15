@@ -10,6 +10,8 @@ const shortenedURL = require('./shortenedURL');
 // schema for the collection array
 const URLArraySchema = new mongoose.Schema({
 
+    "_id" : String,
+
     'URLs' : [shortenedURL.shortSchema]
 
 });
@@ -20,7 +22,7 @@ const URLArrayModel = mongoose.model('URLArrayModel', URLArraySchema);
 module.exports = {
 
     schema : URLArraySchema,
-    collection : URLArrayModel
+    model : URLArrayModel
 
 };
 
