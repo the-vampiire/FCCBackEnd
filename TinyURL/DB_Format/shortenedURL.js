@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
 const shortSchema = mongoose.Schema({
 
     "original" : String,
-    "route" : String,
     "short" : String,
     "created": {type: Date, default: Date.now()},
     "used": {type: Number, default: 0}
@@ -27,5 +26,6 @@ let shortModel = mongoose.model('Short', shortSchema);
 
 
 module.exports = {
+    shortSchema: shortSchema,
     shortModel: shortModel
 };

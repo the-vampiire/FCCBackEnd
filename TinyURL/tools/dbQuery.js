@@ -12,7 +12,7 @@ function dbSearch(db, route){
 
     db.find({}).then(function(result){
 
-        let created = result.created;
+
 
 
     });
