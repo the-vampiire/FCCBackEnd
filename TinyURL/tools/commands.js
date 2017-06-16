@@ -28,6 +28,7 @@ function addURL(collection, link){
 
     const array = collection[0].URLs;
 
+// REMOVE THIS - possible bug of user route not matching db route??  --------------- //
     array.forEach(function(e,i){
         e._id = i;
 

@@ -33,7 +33,9 @@ router.get('/', function(req, res){
 
     // res.json('test worked');
 
-    res.render('link', {url : 'testing some shit out'});
+    // res.render('link', {url : 'testing some shit out'});
+
+    dbQuery.setURL('https://www.google.com').then( shortURL => res.render('link', { url : shortURL }));
 
 });
 

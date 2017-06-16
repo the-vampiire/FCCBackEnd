@@ -15,8 +15,14 @@ app.listen(port, function(){
     console.log(`listening on port ${port}`);
 });
 
-app.use('/', controller);
+// public directory holds all static files
+app.use('/public', express.static('public'));
 
 app.set('view engine', 'ejs');
+
+// pass all requests to the controller
+app.use('/', controller);
+
+
 
 

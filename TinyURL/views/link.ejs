@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>URL Shortener</title>
+    <title>Shortened Link</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/styles/link.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 
-<p id="url"><%= url %></p>
-<button id="copy" data-clipboard-target="#url">copy</button>
+<input id="url" value="<%= url %>" size="38">
 
-<script src="../node_modules/clipboard/dist/clipboard.min.js"></script>
-<script>
+<button id="copy" data-clipboard-target="#url"><i class="fa fa-clipboard"></i></button>
 
-    new Clipboard('copy');
-
-</script>
+<script src="../public/scripts/clipboard.min.js"></script>
+<script src="../public/scripts/clipboard.js"></script>
 </body>
 </html>
