@@ -17,4 +17,6 @@ app.listen(port, function(){
 
 app.use('/', controller);
 
+app.set('view engine', 'ejs');
+
 

@@ -22,6 +22,8 @@ mongoose.connect(DB_Route, function(err){
     if(err) throw err;
     console.log('connected to database');
 
+    // test();
+
 });
 
 
@@ -34,7 +36,6 @@ router.get('/', function(req, res){
     res.json('test worked');
 
 });
-
 
 // use res.redirect('link') to respond with an automatic redirect (for routing the shortened URL)
 
@@ -50,18 +51,26 @@ router.get('/:id', function(req, res) {
 
 });
 
+
+// or use router.post('/link'...) and
+// link = req.body.NAME.VALUE? from form submission
 router.post('/:id', function(req, res){
 
     // handle shortening the link based on user input
 
+    console.log(req.body);
+
     let link = req.params.id;
 
-    dbQuery.setURL(link);
-
-    // send back to homepage
-    res.redirect('/');
+    // call the setURL which returns a promise containing the shortenedURL
+    // pass the shortURL into the render for the user to copy
+    dbQuery.setURL(link).then( shortURL => res.render('pages/index', { url : shortURL }));
 
 });
+
+
+
+
 
 
 

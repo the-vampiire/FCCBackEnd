@@ -28,16 +28,23 @@ function getURL(route){
 
 function setURL(link){
 
-    tools.cleaner.cleaner(data);
 
-    URLArrayModel.find({"_id" : "URLArray"}).then(function(collection){
+    console.log('called setURL');
 
-        tools.commands.addURL(collection, link);
+    return URLArrayModel.find({"_id" : "URLArray"}).then(function(collection){
+
+        // tools.cleaner.cleaner(data);
+
+        let shortURL = tools.commands.addURL(collection, link).shortenedURL;
 
         collection[0].save(function(err){
 
-            console.log('saved a new one named test2');
-        })
+            if(err) throw err;
+
+            console.log(`new link saved: ${shortURL}`)
+        });
+
+        return shortURL;
 
     });
 
