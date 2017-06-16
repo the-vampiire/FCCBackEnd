@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+</head>
+<body>
+
+<p id="url"><%= url %></p>
+<button id="copy" data-clipboard-target="#url">copy</button>
+
+<script src="../node_modules/clipboard/dist/clipboard.min.js"></script>
+<script>
+
+    new Clipboard('copy');
+
+</script>
+</body>
+</html>

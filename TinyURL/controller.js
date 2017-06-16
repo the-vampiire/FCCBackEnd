@@ -22,8 +22,6 @@ mongoose.connect(DB_Route, function(err){
     if(err) throw err;
     console.log('connected to database');
 
-    // test();
-
 });
 
 
@@ -33,7 +31,9 @@ router.get('/', function(req, res){
 
     // serve homepage
 
-    res.json('test worked');
+    // res.json('test worked');
+
+    res.render('link', {url : 'testing some shit out'});
 
 });
 
@@ -64,7 +64,7 @@ router.post('/:id', function(req, res){
 
     // call the setURL which returns a promise containing the shortenedURL
     // pass the shortURL into the render for the user to copy
-    dbQuery.setURL(link).then( shortURL => res.render('pages/index', { url : shortURL }));
+    dbQuery.setURL(link).then( shortURL => res.render('link', { url : shortURL }));
 
 });
 
