@@ -4,6 +4,9 @@
 
 const express = require('express');
 
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+
 const app = express();
 
 const controller = require('./controller');
@@ -14,6 +17,12 @@ app.listen(port, function(){
 
     console.log(`listening on port ${port}`);
 });
+
+//middleware to process the url submitted by the user
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
+    // validator to validate the form
+    app.use(expressValidator());
 
 // public directory holds all static files
 app.use('/public', express.static('public'));

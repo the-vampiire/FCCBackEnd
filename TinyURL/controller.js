@@ -31,11 +31,8 @@ router.get('/', function(req, res){
 
     // serve homepage
 
-    // res.json('test worked');
+    res.render('index', {url : ''});
 
-    // res.render('link', {url : 'testing some shit out'});
-
-    dbQuery.setURL('https://www.google.com').then( shortURL => res.render('link', { url : shortURL }));
 
 });
 
@@ -54,20 +51,25 @@ router.get('/:id', function(req, res) {
 });
 
 
-// or use router.post('/link'...) and
-// link = req.body.NAME.VALUE? from form submission
-router.post('/:id', function(req, res){
+router.post('/', function(req, res){
 
-    // handle shortening the link based on user input
+    // validate and sanitize the input
+    req.checkBody('url', 'enter a valid URL').isURL();
 
-    console.log(req.body);
+    let validationErrors = req.validationErrors();
 
-    let link = req.params.id;
+    if(validationErrors){
+        console.log(validationErrors);
+    }
 
-    // call the setURL which returns a promise containing the shortenedURL
-    // pass the shortURL into the render for the user to copy
-    dbQuery.setURL(link).then( shortURL => res.render('link', { url : shortURL }));
+    // if it passes then proceed to generating the shortURL and rendering the view with it
+    else{
+        let link = req.body.url;
+        // call the setURL which returns a promise containing the shortenedURL
+        // pass the shortURL into the render for the user to copy
+        dbQuery.setURL(link).then( shortURL => res.render('index', { url : shortURL }));
 
+    }
 });
 
 

@@ -15,8 +15,8 @@ function getURL(route){
 
     return URLArrayModel.find({"_id" : "URLArray"}).then(function(collection){
 
-        // run the cleaner to cleanup old / unused links
-        tools.cleaner.cleaner(collection);
+        // // run the cleaner to cleanup old / unused links
+        // tools.cleaner.cleaner(collection);
 
         const URLArray = collection[0].URLs;
 
@@ -28,14 +28,11 @@ function getURL(route){
 
 function setURL(link){
 
-
-    console.log('called setURL');
-
     return URLArrayModel.find({"_id" : "URLArray"}).then(function(collection){
 
-        // tools.cleaner.cleaner(data);
+        const URLArray = collection[0].URLs;
 
-        let shortURL = tools.commands.addURL(collection, link).shortenedURL;
+        let shortURL = tools.commands.addURL(URLArray, link).shortenedURL;
 
         collection[0].save(function(err){
 
@@ -47,8 +44,6 @@ function setURL(link){
         return shortURL;
 
     });
-
-
 }
 
 module.exports = {

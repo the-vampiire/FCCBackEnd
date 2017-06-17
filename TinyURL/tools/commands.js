@@ -21,20 +21,14 @@ function newShortURL(link, route){
     return shortDoc;
 }
 
-function addURL(collection, link){
+function addURL(array, link){
 
 // update all the indices (_id which stores the routes) for existing shortened URL documents
 // prevent overlapping routes
 
-    const array = collection[0].URLs;
+    let lastRoute = array[array.length-1]._id;
 
-// REMOVE THIS - possible bug of user route not matching db route??  --------------- //
-    array.forEach(function(e,i){
-        e._id = i;
-
-    });
-
-    let route = array.length;
+    let route = lastRoute+1;
 
     let shortDoc = newShortURL(link, route);
 

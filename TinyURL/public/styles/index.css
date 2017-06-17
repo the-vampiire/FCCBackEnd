@@ -1,0 +1,78 @@
+body{
+    background-color: cornflowerblue;
+}
+
+#instructions{
+    text-align: center;
+    color: white;
+}
+
+#instructionList{
+    font-size: 1.5em;
+    text-align: left;
+}
+
+#title{
+    font-size: 3em;
+}
+
+
+#display{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#shortURL {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 10px auto;
+}
+
+#copyIcon{
+    height: 2.5em;
+    margin-bottom: -5px;
+}
+
+#copy{
+    border-radius: 5px;
+    background-color: white;
+}
+
+#copy:focus{
+    outline: none;
+    /*border: none;*/
+}
+
+#longURL {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#submitIcon{
+    height: 2.5em;
+    margin-bottom: -5px;
+    transform: rotate(180deg);
+}
+
+#submit{
+    border-radius: 5px;
+    background-color: white;
+}
+
+#submit:focus{
+    outline: none;
+    /*border: none;*/
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: black;
+}
+
