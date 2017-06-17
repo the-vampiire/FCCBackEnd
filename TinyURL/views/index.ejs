@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+
+    <link href="../public/styles/index.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div id="instructions">
+    <h1 id="title">Vampiire URL Shortener</h1>
+    <ol id="instructionList"><h2>Instructions</h2>
+        <li>
+            Paste your long URL and click the submit arrow. In the box below a shortened link will appear.
+        </li>
+        <li>
+             Click the clipboard button to automatically copy it to your clipboard.
+        </li>
+        <li>
+            When you use the shortened URL this server will automatically reroute you to your original link!
+        </li>
+    </ol>
+</div>
+
+<div id="display">
+    <form action="/" method="post">
+        <input id="longURL" type="url" size="38" placeholder="paste your URL here" name="url">
+        <button id="submit" type="submit">
+            <img id="submitIcon" src="../public/graphics/go%20arrow.png">
+        </button>
+    </form>
+
+    <input id="shortURL" value="<%= url %>" placeholder="click to copy to your clipboard -->" size="38">
+    <button id="copy" data-clipboard-target="#shortURL">
+        <img id="copyIcon" src="../public/graphics/copyIcon.png">
+    </button>
+</div>
+
+<footer>
+
+</footer>
+
+
+<script src="../public/scripts/clipboard.min.js"></script>
+<script src="../public/scripts/clipboard.js"></script>
+</body>
+</html>
